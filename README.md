@@ -11,9 +11,9 @@
 
 | Nội dung | Đánh giá của tôi và lý do |
 | --- | --- |
-| Những tác hại chính có thể xảy ra | **Tổn hại sức khỏe và đe dọa tính mạng** bệnh nhân do chẩn đoán sai, bỏ sót ca bệnh cấp tính hoặc đề xuất phác đồ điều trị nguy hiểm; **bất bình đẳng y tế** khi thuật toán phân biệt đối xử đối với nhóm yếm thế; **quá tải hệ thống y tế** do báo động giả hàng loạt (alert fatigue); **rò rỉ dữ liệu sức khỏe cá nhân** (thông tin bệnh án, sinh trắc học). Bệnh nhân, y bác sĩ và cơ sở y tế là những bên chịu ảnh hưởng trực tiếp. |
-| Mức độ high-stakes | **Cao (High / Critical):** Quyết định trong y tế can thiệp trực tiếp đến sự sống, thể chất, sự an toàn và quyền được chăm sóc sức khỏe của con người. Một quyết định sai lệch từ AI có thể dẫn đến biến chứng vĩnh viễn, suy giảm cơ hội sống sót hoặc tử vong mà không có cơ hội phục hồi. |
-| Dữ liệu nhạy cảm có thể được sử dụng | Hồ sơ bệnh án điện tử (EHR/EMR), tiền sử bệnh tật và dùng thuốc, hình ảnh chẩn đoán y khoa (X-quang, MRI, CT), dữ liệu giải trình tự gen/DNA, dữ liệu sinh hiệu thời gian thực (nhịp tim, huyết áp, SPO2), thông tin bảo hiểm y tế và chi phí khám chữa bệnh. |
+| Những tác hại chính có thể xảy ra | **Tổn hại sức khỏe và tính mạng (injury)** do chẩn đoán sai, bỏ sót ca bệnh cấp tính hoặc đề xuất phác đồ điều trị nguy hiểm; **mất cơ hội tiếp cận y tế công bằng (opportunity loss)** khi thuật toán phân biệt đối xử với nhóm yếm thế; **quá tải nhận thức / mệt mỏi vì báo động (alert fatigue)** cho nhân viên y tế do báo động giả; **mất quyền riêng tư (privacy loss)** khi rò rỉ hồ sơ bệnh án cá nhân. Bệnh nhân, y bác sĩ và cơ sở y tế là các bên chịu ảnh hưởng trực tiếp. |
+| Mức độ high-stakes | **Cao (High / Critical):** Quyết định trong y tế can thiệp trực tiếp đến sự sống, thể chất, sự an toàn và quyền được chăm sóc sức khỏe của con người. Một quyết định sai lệch từ AI có thể dẫn đến biến chứng vĩnh viễn, tàn tật hoặc tử vong mà không có cơ hội phục hồi. |
+| Dữ liệu nhạy cảm có thể được sử dụng | Hồ sơ bệnh án điện tử (EHR/EMR), tiền sử bệnh lý và phác đồ dùng thuốc, hình ảnh chẩn đoán y khoa (X-quang, MRI, CT), dữ liệu giải trình tự gen/DNA, dữ liệu sinh hiệu thời gian thực (nhịp tim, huyết áp, SPO2), thông tin bảo hiểm y tế và chi phí khám chữa bệnh. |
 | Nhu cầu human review | **Cao (Bắt buộc Human-in-the-loop):** Bác sĩ chuyên khoa hoặc chuyên viên y tế có chứng chỉ hành nghề phải trực tiếp kiểm tra và phê duyệt ở bước ra quyết định lâm sàng (chẩn đoán, kê đơn, phác đồ điều trị, xếp mức ưu tiên cấp cứu). AI chỉ đóng vai trò hỗ trợ tham vấn (clinical decision support), tuyệt đối không để AI tự động ban hành quyết định điều trị trực tiếp lên bệnh nhân. |
 
 ---
@@ -39,17 +39,17 @@
 #### Harm Map Worksheet
 | Trường | Phân tích của tôi |
 | --- | --- |
-| High-risk moment | Thời điểm hệ thống AI tự động xếp hạng điểm rủi ro (risk score) và xuất danh sách các bệnh nhân được ưu tiên vào chương trình hỗ trợ y tế đặc biệt. |
-| Stakeholder bị ảnh hưởng | Bệnh nhân người Mỹ gốc Phi (bị tước bỏ quyền lợi chăm sóc y tế chuyên sâu), các bệnh viện/bảo hiểm (bị khiếu nại phân biệt đối xử, phân bổ sai nguồn lực y tế). |
-| Failure mode | Bias / Proxy variable misalignment (Thiên lệch dữ liệu do chọn sai biến đại diện: đồng nhất chi phí y tế với tình trạng sức khỏe). |
-| Layer bắt đầu lỗi | **Model & Grounding:** Lựa chọn biến mục tiêu (target variable/proxy) sai lệch ngay từ khâu thiết kế dữ liệu huấn luyện và định nghĩa bài toán của mô hình. |
-| Harm xảy ra là gì? | Hàng chục ngàn bệnh nhân da đen mắc bệnh mãn tính nặng bị tước mất cơ hội tiếp cận hỗ trợ y tế chủ động (**Đã xảy ra** trên diện rộng trong nhiều năm triển khai). |
-| Harm lens | Tác hại công bằng xã hội (Fairness/Equity harm) & Tác hại sức khỏe gián tiếp (Health harm do mất cơ hội điều trị sớm). |
-| Severity | **High:** Bệnh nhân không nhận được can thiệp sớm dẫn đến nguy cơ suy thoái sức khỏe nghiêm trọng và tăng biến chứng bệnh lý mãn tính. |
-| Scale | **Rộng lớn (Vĩ mô):** Áp dụng cho tập khách hàng tiềm năng lên đến 200 triệu người trên khắp các mạng lưới bệnh viện và công ty bảo hiểm tại Mỹ. |
-| Probability | **Certain / Đã xảy ra (100%):** Thiên lệch được chứng minh bằng thực nghiệm toán học và thống kê trên toàn bộ tập dữ liệu mẫu. |
-| Frequency | **Continuous:** Diễn ra liên tục trong mọi chu kỳ chạy thuật toán phân bổ bệnh nhân hàng tháng/hàng năm. |
-| Vì sao? | Đánh giá dựa trên bài báo khoa học bình duyệt (peer-reviewed) trên tạp chí đầu ngành *Science* với tập dữ liệu thực tế gồm 49.618 bệnh nhân. |
+| High-risk moment | Thời điểm hệ thống AI tính toán điểm rủi ro sức khỏe (risk score) và tự động xuất danh sách đề xuất các bệnh nhân được ưu tiên tham gia chương trình Quản lý chăm sóc đặc biệt (High-Risk Care Management). |
+| Stakeholder bị ảnh hưởng | Bệnh nhân người Mỹ gốc Phi bị tước bỏ quyền lợi chăm sóc y tế chuyên sâu; các bệnh viện và công ty bảo hiểm đối mặt với nguy cơ pháp lý và phân bổ sai lệch nguồn lực y tế. |
+| Failure mode | **Bias / fairness** (AI tạo ra kết quả phân biệt đối xử bất công bằng giữa các nhóm chủng tộc do dùng sai biến đại diện proxy chi phí y tế). |
+| Layer bắt đầu lỗi | **Grounding & Model:** Ở tầng Grounding, dữ liệu đầu vào và định nghĩa mục tiêu bị méo mó (chi phí y tế quá khứ phản ánh khả năng tài chính thay vì mức độ bệnh); ở tầng Model, hàm mục tiêu tối ưu hóa sai biến dự đoán. |
+| Harm xảy ra là gì? | **Bệnh nhân người Mỹ gốc Phi bị mất cơ hội tiếp cận chương trình chăm sóc y tế chủ động khi thuật toán đánh giá thấp mức độ bệnh tật của họ** (*Đã xảy ra* trên diện rộng trong nhiều năm). Nguy cơ biến chứng bệnh mãn tính trở nặng do thiếu can thiệp sớm (*Nguy cơ cao*). |
+| Harm lens | **opportunity loss** (mất cơ hội tiếp cận dịch vụ y tế nâng cao) và **injury** (nguy cơ tổn hại thể chất gián tiếp). |
+| Severity | **High:** Ảnh hưởng trực tiếp đến việc kiểm soát bệnh mãn tính và làm gia tăng nguy cơ biến chứng y tế nghiêm trọng cho nhóm bệnh nhân yếu thế. |
+| Scale | **High (Quy mô lớn):** Thuật toán được áp dụng cho tập khách hàng quản lý sức khỏe tiềm năng lên tới 200 triệu người tại các bệnh viện và hãng bảo hiểm tại Mỹ. |
+| Probability | **High (Chắc chắn / Đã xảy ra 100%):** Thiên lệch được chứng minh bằng thực nghiệm toán học và thống kê cụ thể trên toàn bộ tập dữ liệu mẫu 49.618 bệnh nhân. |
+| Frequency | **High (Liên tục):** Diễn ra định kỳ trong mọi chu kỳ chạy thuật toán phân bổ bệnh nhân hàng tháng/hàng năm của hệ thống. |
+| Vì sao? | Đánh giá dựa trên nghiên cứu khoa học bình duyệt trên tạp chí đầu ngành *Science* (2019) với số liệu đo lường cụ thể; giới hạn là chưa có số liệu định lượng về các ca tử vong cụ thể phát sinh. |
 
 ---
 
@@ -74,17 +74,17 @@
 #### Harm Map Worksheet
 | Trường | Phân tích của tôi |
 | --- | --- |
-| High-risk moment | Khi bác sĩ điều trị nhận báo cáo phác đồ khuyến nghị từ Watson for Oncology để ra quyết định kê đơn thuốc/hóa trị cho bệnh nhân ung thư. |
-| Stakeholder bị ảnh hưởng | Bệnh nhân ung thư (nguy cơ sốc thuốc, biến chứng xuất huyết), bác sĩ điều trị (nguy cơ sai sót y khoa), các bệnh viện (thiệt hại hàng triệu USD chi phí đầu tư phần mềm). |
-| Failure mode | Hallucination / Training Distribution Shift (Đưa ra khuyến nghị sai lệch do dữ liệu huấn luyện là ca bệnh giả định hạn hẹp, không tổng quát hóa được cho thực tế lâm sàng). |
-| Layer bắt đầu lỗi | **Grounding & Model:** Thiếu dữ liệu thực tế khách quan đa trung tâm; quy trình nạp tri thức y khoa dựa trên ý kiến chủ quan của một nhóm nhỏ chuyên gia MSKCC. |
-| Harm xảy ra là gì? | Đề xuất thuốc nguy hiểm đến tính mạng (**Nguy cơ cao** được ghi nhận trong báo cáo nội bộ; chưa ghi nhận ca tử vong thực tế do bác sĩ đã phát hiện và bác bỏ). Gây thiệt hại tài chính lớn và lãng phí thời gian điều trị của bệnh viện (**Đã xảy ra**). |
-| Harm lens | Tác hại an toàn sinh mạng (Physical Safety harm) & Tác hại tài chính/lãng phí nguồn lực (Financial/Resource harm). |
-| Severity | **Critical:** Sai sót trong điều trị ung thư (ví dụ gây xuất huyết không kiểm soát) có thể dẫn tới tử vong trực tiếp cho bệnh nhân. |
-| Scale | **Medium - Large:** Hơn 140 cơ sở y tế tại nhiều quốc gia (Mỹ, Hàn Quốc, Ấn Độ, Trung Quốc...) đã áp dụng thử nghiệm. |
-| Probability | **High (về mặt tạo lỗi sai):** Đã xảy ra nhiều lần trong môi trường thử nghiệm và kiểm thử lâm sàng. |
-| Frequency | **Frequent:** Tần suất đưa ra phác đồ không tương thích với bác sĩ địa phương lên tới hơn 50% ở một số loại ung thư (như đại trực tràng). |
-| Vì sao? | Căn cứ từ tài liệu nội bộ mật của IBM bị rò rỉ, các bài phóng sự điều tra của *STAT News* và các nghiên cứu lâm sàng độc lập tại các bệnh viện Hàn Quốc, Ấn Độ. |
+| High-risk moment | Thời điểm hệ thống AI xuất báo cáo đề xuất phác đồ điều trị (kê đơn thuốc đặc trị, phác đồ hóa trị) để bác sĩ lâm sàng cân nhắc chỉ định cho bệnh nhân ung thư. |
+| Stakeholder bị ảnh hưởng | Bệnh nhân ung thư (nguy cơ bị ngộ độc hoặc tử vong do phác đồ sai), bác sĩ ung bướu (nguy cơ sai sót y khoa và trách nhiệm nghề nghiệp), các bệnh viện (thiệt hại hàng triệu USD đầu tư và suy giảm uy tín). |
+| Failure mode | **Harmful advice** (AI đưa ra lời khuyên phác đồ điều trị gây nguy hiểm tính mạng) và **Hallucination** (AI suy diễn phác đồ điều trị sai lệch từ tập ca bệnh giả định). |
+| Layer bắt đầu lỗi | **Grounding & Safety:** Ở tầng Grounding, nguồn dữ liệu đào tạo thiếu khách quan (dùng ca bệnh giả định của một nhóm nhỏ bác sĩ MSKCC); ở tầng Safety, hệ thống thiếu bộ lọc kiểm tra chéo các chống chỉ định cấp cứu (chảy máu/xuất huyết) trước khi đưa ra phác đồ. |
+| Harm xảy ra là gì? | **Bệnh nhân ung thư đối mặt với nguy cơ tử vong do xuất huyết khi AI khuyến nghị phác đồ thuốc chống chỉ định** (*Nguy cơ rất cao* ghi nhận trong tài liệu nội bộ; thực tế chưa có ca tử vong do bác sĩ đã phát hiện và chặn lại). Các bệnh viện bị thiệt hại hàng triệu USD chi phí triển khai phần mềm không hiệu quả (*Đã xảy ra*). |
+| Harm lens | **injury** (nguy cơ tổn hại thể chất/tính mạng nghiêm trọng) và **misinformation** (thông tin tư vấn y khoa sai lệch). |
+| Severity | **Critical:** Sai sót trong chỉ định thuốc ung bướu (gây xuất huyết không kiểm soát) có thể cướp đi sinh mạng bệnh nhân chỉ sau một liều dùng. |
+| Scale | **Medium:** Đã triển khai thử nghiệm tại hơn 140 cơ sở y tế trên toàn cầu trước khi bị dừng hoặc hủy bỏ hợp đồng. |
+| Probability | **Medium:** Tỷ lệ đưa ra phác đồ không tương thích với bác sĩ lên tới hơn 51% đối với một số loại ung thư như ung thư đại trực tràng. |
+| Frequency | **Medium:** Xuất hiện lặp lại ở các ca bệnh có diễn biến lâm sàng phức tạp hoặc có nhiều bệnh nền kết hợp. |
+| Vì sao? | Căn cứ từ tài liệu mật nội bộ rò rỉ của IBM do *STAT News* điều tra và các báo cáo thử nghiệm lâm sàng độc lập tại Bệnh viện Bundang (Hàn Quốc); giới hạn là không có ca tử vong thực tế nhờ có sự kiểm tra của bác sĩ (Human-in-the-loop). |
 
 ---
 
@@ -110,14 +110,14 @@
 #### Harm Map Worksheet
 | Trường | Phân tích của tôi |
 | --- | --- |
-| High-risk moment | Khi hệ thống tự động nhảy cửa sổ pop-up cảnh báo đỏ hoặc khi bệnh nhân đang chuyển biến xấu nhưng AI không phát tín hiệu cảnh báo. |
-| Stakeholder bị ảnh hưởng | Bệnh nhân nội trú (nguy cơ tử vong do sốc nhiễm trùng không được cấp cứu sớm), bác sĩ và điều dưỡng trực (bị stress, kiệt sức vì báo động giả). |
-| Failure mode | High False Alarm Rate & Low Sensitivity (Độ nhạy thấp dẫn đến bỏ sót ca bệnh nguy kịch + Tỷ lệ báo động giả cực cao). |
-| Layer bắt đầu lỗi | **Model & UX:** Mô hình phân loại kém chính xác (Model layer) kết hợp với thiết kế giao diện cảnh báo dạng pop-up liên tục thiếu chọn lọc (UX layer) làm gia tăng hiện tượng alert fatigue. |
-| Harm xảy ra là gì? | Bỏ sót 67% ca nhiễm trùng huyết thực tế (**Đã xảy ra**); gây quá tải tâm lý và phân tâm cho y tá, bác sĩ trong ca trực (**Đã xảy ra**). |
-| Harm lens | Tác hại tính mạng/sức khỏe (Physical Harm) & Tác hại năng suất làm việc của nhân viên y tế (Cognitive Overload). |
-| Severity | **Critical:** Nhiễm trùng huyết là nguyên nhân gây tử vong hàng đầu tại bệnh viện nếu không được truyền kháng sinh trong "giờ vàng" đầu tiên. |
-| Scale | **Large:** Triển khai trên hàng trăm bệnh viện sử dụng phần mềm EHR của Epic trên toàn nước Mỹ. |
-| Probability | **Certain / Đã xảy ra (100%):** Tỷ lệ báo động giả 88% xảy ra đều đặn hàng ngày trong quy trình vận hành. |
-| Frequency | **Continuous:** Hàng nghìn cảnh báo được kích hoạt mỗi ngày trên toàn bộ các khoa phòng bệnh viện. |
-| Vì sao? | Dựa trên kết quả nghiên cứu kiểm định độc lập được bình duyệt và đăng tải trên tạp chí y khoa hàng đầu *JAMA Internal Medicine*. |
+| High-risk moment | Thời điểm hệ thống AI tự động kích hoạt cửa sổ pop-up cảnh báo đỏ sốc nhiễm trùng huyết trên giao diện bệnh án điện tử, hoặc khi bệnh nhân chuyển biến xấu nặng nhưng AI không phát tín hiệu cảnh báo. |
+| Stakeholder bị ảnh hưởng | Bệnh nhân nội trú (nguy cơ tử vong do không được can thiệp điều trị nhiễm trùng huyết kịp thời), bác sĩ và điều dưỡng trực (bị căng thẳng nhận thức, quá tải tâm lý vì báo động giả liên tục). |
+| Failure mode | **Escalation failure** (AI không phát hiện và không chuyển tiếp/cảnh báo kịp thời cho 67% ca nhiễm trùng huyết thật) và **Over-reliance / Alert fatigue** (báo động giả 88% làm suy giảm tính cảnh giác của nhân viên y tế). |
+| Layer bắt đầu lỗi | **Model & UX:** Ở tầng Model, thuật toán phân loại có độ nhạy kém và AUC thực tế chỉ đạt 0.63; ở tầng UX, thiết kế giao diện thông báo dạng pop-up liên tục thiếu phân loại mức độ ưu tiên làm trầm trọng thêm tình trạng quá tải nhận thức. |
+| Harm xảy ra là gì? | **Bệnh nhân nội trú bị bỏ sót điều trị nhiễm trùng huyết trong "giờ vàng" khi AI không phát cảnh báo ở 67% ca bệnh thực tế** (*Đã xảy ra*); **Y bác sĩ và điều dưỡng bị kiệt sức nhận thức và suy giảm phản xạ cấp cứu khi 88% cảnh báo nhận được là báo động giả** (*Đã xảy ra*). |
+| Harm lens | **injury** (tổn hại thể chất, nguy cơ tử vong do nhiễm trùng huyết) và **misinformation** (cảnh báo giả gây sai lệch nhận định lâm sàng). |
+| Severity | **Critical:** Nhiễm trùng huyết là nguyên nhân gây tử vong hàng đầu trong bệnh viện nếu chậm trễ truyền kháng sinh cấp cứu. |
+| Scale | **High:** Triển khai trên hàng trăm bệnh viện sử dụng hệ thống hồ sơ bệnh án điện tử Epic tại Hoa Kỳ; nghiên cứu thực nghiệm đo lường trên 38.455 ca nhập viện. |
+| Probability | **High (Đã xảy ra 100%):** Tỷ lệ báo động giả 88% và tỷ lệ bỏ sót 67% được đo lường chính xác bằng thực nghiệm lâm sàng. |
+| Frequency | **High (Liên tục):** Hàng nghìn cảnh báo giả phát ra liên tục mỗi ngày trên toàn bộ các khoa phòng nội trú. |
+| Vì sao? | Đánh giá dựa trên nghiên cứu kiểm định độc lập được bình duyệt và đăng tải trên tạp chí y khoa hàng đầu *JAMA Internal Medicine* (2021) với dữ liệu thực tế từ 27.697 bệnh nhân. |
